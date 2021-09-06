@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap5/css/bootstrap.min.css' %}">
+
+    <!-- customfont -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i">
+
+    <!-- one page wonderS -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <!-- My style -->
+    <link rel="stylesheet" href="{% static 'css/mystyles.css' %}">
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+    <div id="wraooer">
+        <!-- navigation bar -->
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'diary:index' %}">PRIVATE DIARY</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item {% block active_inquiry %}{% endblock %}">
+                            <a class="nav-link" href="">INQUIRY</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Sign Up</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Log in</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- end navigation bar -->
+
+        {% block header %}{% endblock %}
+        {% block contents %}{% endblock %}
+
+        <!-- footer -->
+        <footer class="">
+            <div class="container">
+                <p class="m-0 text-center text-white small">Copyright &copy;Private Dairy 2019</p>
+            </div>
+            <!-- /.container -->
+        </footer>
+        <!-- end footer -->
+
+        <!-- jquery -->
+        <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+        <!-- bootstrao -->
+        <script src="{% static 'vendor/bootstrap5/js/bootstrap.bundle.min.js' %}"></script>
+    </div>
+</body>
+
+</html>
