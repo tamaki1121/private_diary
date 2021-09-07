@@ -40,11 +40,12 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item {% block active_inquiry %}{% endblock %}">
-                            <a class="nav-link" href="">INQUIRY</a>
+                        <li class="nav-item">
+                            <a class="nav-link  {% block active_inquiry %}{% endblock %}"
+                                href="{% url 'diary:inquiry' %}">INQUIRY</a>
                         </li>
                     </ul>
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="#">Sign Up</a>
                         </li>
@@ -61,7 +62,7 @@
         {% block contents %}{% endblock %}
 
         <!-- footer -->
-        <footer class="">
+        <footer class="py-5 bg-black">
             <div class="container">
                 <p class="m-0 text-center text-white small">Copyright &copy;Private Dairy 2019</p>
             </div>

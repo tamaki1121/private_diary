@@ -9,8 +9,8 @@ from .forms import InquiryForm
 class IndexView(generic.TemplateView):
     template_name = "diary/index.html"
 
-class BaseView(generic.TemplateView):
-    template_name = "diary/base.html"
+# class BaseView(generic.TemplateView):
+#     template_name = "diary/base.html"
 
 class InquiryView(generic.FormView):
     template_name = "diary/inquiry.html"
