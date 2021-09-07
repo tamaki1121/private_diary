@@ -1,5 +1,6 @@
 from django import forms
 
+
 class InquiryForm(forms.Form):
     name = forms.CharField(label='お名前', max_length=30)
     email = forms.EmailField(label='メールアドレス')
@@ -8,7 +9,10 @@ class InquiryForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        
+
+        # form-controlにwidth100%が指定され
+        # colが反映されることはない
+
         self.fields['name'].widget.attrs['class'] = 'form-control col-9'
         self.fields['name'].widget.attrs['placeholder'] = 'お名前をここに入力してください'
 
