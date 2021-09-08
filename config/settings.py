@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
+# error
+from django.contrib.messages import constants as messages
 
 import os
 
@@ -124,3 +126,52 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+# Logging
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+
+    # Loggers
+    'loggers':{
+        'django':{
+            'handlers': ['console'],
+            'level': 'INFO',
+        },
+        'diary':{
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+    },
+    'handlers':{
+        'console':{
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'dev'
+        },
+    },
+    
+    # formatter
+    'formatters':{
+        'dev':{
+            'format': '\t'.join([
+                '%(asctime)s',
+                '[%(levelname)s]',
+                '%(pathname)s(Line:%(lineno)d)',
+                '%(message)s'
+            ])
+        },
+    }
+
+}
+
+# email print
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# error
+MESSAGE_TAGS = {
+    messages.ERROR: 'alert alert-dabger',
+    messages.WARNING: 'alert alert-warning',
+    messages.SUCCESS: 'alert alert-success',
+    messages.INFO: 'alert alert-info',
+}
