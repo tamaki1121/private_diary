@@ -42,7 +42,7 @@ INSTALLED_APPS = [
 
     # my apps
     'diary.apps.DiaryConfig',
-    'diary.apps.AccountsConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
