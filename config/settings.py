@@ -43,6 +43,12 @@ INSTALLED_APPS = [
     # my apps
     'diary.apps.DiaryConfig',
     'accounts.apps.AccountsConfig',
+
+    # django-allauth
+    # 'django.contrib.sites',
+    # 'allauth',
+    # 'allauth.account',
+
 ]
 
 MIDDLEWARE = [
@@ -177,3 +183,9 @@ MESSAGE_TAGS = {
     messages.SUCCESS: 'alert alert-success',
     messages.INFO: 'alert alert-info',
 }
+
+# 
+# AUTH_USER_MODEL = 'accounts.CustomUser'
+
+# 
+#
