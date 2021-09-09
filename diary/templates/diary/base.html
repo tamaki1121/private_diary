@@ -46,12 +46,18 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto">
+                        {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Sign Up</a>
+                            <a class="nav-link" href="{% url 'account_logout' %}">Log Out</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item {% block actuve_signup %}{% endblock %}">
+                            <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Log in</a>
+                            <a class="nav-link" href="{% url 'account_login' %}">Log in</a>
                         </li>
+                        {% emdif %}
                     </ul>
                 </div>
             </div>
