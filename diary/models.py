@@ -12,7 +12,7 @@ class Diary(models.Model):
     photo1 = models.ImageField(verbose_name='写真1', blank=True)
     photo2 = models.ImageField(verbose_name='写真2', blank=True)
     photo3 = models.ImageField(verbose_name='写真3', blank=True)
-    create_at = models.DateTimeField(verbose_name='作成日時', auto_now_add=True)
+    created_at = models.DateTimeField(verbose_name='作成日時', auto_now_add=True)
     update_at = models.DateTimeField(verbose_name='更新日時', auto_now=True)
 
     class Meta:
