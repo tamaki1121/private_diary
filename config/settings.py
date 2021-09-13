@@ -141,27 +141,27 @@ LOGGING = {
     'disable_existing_loggers': False,
 
     # Loggers
-    'loggers':{
-        'django':{
+    'loggers': {
+        'django': {
             'handlers': ['console'],
             'level': 'INFO',
         },
-        'diary':{
+        'diary': {
             'handlers': ['console'],
             'level': 'DEBUG',
         },
     },
-    'handlers':{
-        'console':{
+    'handlers': {
+        'console': {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
             'formatter': 'dev'
         },
     },
-    
+
     # formatter
-    'formatters':{
-        'dev':{
+    'formatters': {
+        'dev': {
             'format': '\t'.join([
                 '%(asctime)s',
                 '[%(levelname)s]',
@@ -184,10 +184,10 @@ MESSAGE_TAGS = {
     messages.INFO: 'alert alert-info',
 }
 
-# 
+#
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
-# 
+#
 SITE_ID = 1
 AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
