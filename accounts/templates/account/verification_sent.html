@@ -1,12 +1,18 @@
-{% extends "account/base.html" %}
+{% extends "diary/base.html" %}
+{% block title %}メールアドレスを確認してください | Private Diary{% endblock %}
 
-{% load i18n %}
 
-{% block head_title %}{% trans "Verify Your E-mail Address" %}{% endblock %}
-
-{% block content %}
-    <h1>{% trans "Verify Your E-mail Address" %}</h1>
-
-    <p>{% blocktrans %}We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes.{% endblocktrans %}</p>
+{% block contents %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style">
+            <h1>メールアドレスを確認してください</h1>
+            {% if user.is_authenticated %}
+            {% include "account/snippets/already_logged_in.html" %}
+            {% endif %}
+            <p>確認のメールを送信しました。<br>メールに記載されたリンクをクリックして、ユーザー登録を完了させてください。<br>数分待っても確認のメールが届かない場合はご連絡ください。</p>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
