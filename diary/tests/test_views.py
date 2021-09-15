@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.http import response
 from django.test import TestCase
 from django.urls import reverse_lazy
 
@@ -31,11 +32,14 @@ class TestDiaryCreateView(LoggedInTestCase):
             'photo2': '',
             'photo3': '',
         }
-        response = self.client.post()
+        response = self.client.post(reverse_lazy('diary:diary_create'), params)
+        self.assertRedirects(response, reverse_lazy('diary:diary_list'))
+        self.assertEqual(Diary.objects.filter(title='テストタイトル').count(),1)
 
     def test_create_diary_failure(self):
         """作成失敗検証"""
-        pass
+        response = self.client.post(reverse_lazy('diary:diary_create'))
+        self.assertFormError(response, 'form', 'title', 'このフィールドは必須です。')
 
 
 class TestDiaryUpdateView(LoggedInTestCase):
@@ -43,7 +47,11 @@ class TestDiaryUpdateView(LoggedInTestCase):
 
     def test_update_diary_success(self):
         """編集成功検証"""
-        pass
+        diary = Diary.objects.create(user=self.test_user, title='タイトル編集前')
+        params = {'title': 'タイトル編集後'}
+        response = self.client.post(reverse_lazy('diary:diary_update', kwargs={'pk': diary.pk }), params)
+        self.assertRedirects(response, reverse_lazy('diary:diary_detail', kargs={'pk':diary.pk }))
+        self.assertEqual(Diary.objects.get(pk=diary.pk).title, 'タイトル編集後')
 
     def test_update_diary_failure(self):
         """編集失敗検証"""
